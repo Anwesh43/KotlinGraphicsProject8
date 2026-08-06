@@ -213,4 +213,12 @@ class ArcConcRotDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : ArcConcRotDownView {
+            val view : ArcConcRotDownView = ArcConcRotDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
