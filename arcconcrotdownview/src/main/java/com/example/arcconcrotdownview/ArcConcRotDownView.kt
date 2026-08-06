@@ -40,7 +40,7 @@ fun Canvas.drawArcConcRotDown(scale : Float, w : Float, h : Float, paint : Paint
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h / 2) {
+    drawXY(w / 2, h / 2 + (h / 2) * dsc(4)) {
         rotate(rot * dsc(2))
         for (j in 0..1) {
             val r : Float = size / (1 + j)
@@ -48,6 +48,9 @@ fun Canvas.drawArcConcRotDown(scale : Float, w : Float, h : Float, paint : Paint
                 scale(1f - 2 * j, 1f)
                 drawArc(RectF(-r, -r, r, r), -90f, 90f * dsc(j), false, paint)
             }
+        }
+        drawXY(0f, -size / 2) {
+            drawLine(0f, 0f, 0f, -size * 0.5f * dsc(3), paint)
         }
     }
 }
