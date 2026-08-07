@@ -215,4 +215,12 @@ class LineBentSideSweepView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineBentSideSweepView {
+            val view : LineBentSideSweepView = LineBentSideSweepView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
