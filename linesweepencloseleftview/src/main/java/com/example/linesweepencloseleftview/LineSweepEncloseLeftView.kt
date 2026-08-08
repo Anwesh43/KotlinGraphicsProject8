@@ -192,4 +192,27 @@ class LineSweepEncloseLeftView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineSweepEncloseLeftView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lsel : LineSweepEncloseLeft = LineSweepEncloseLeft(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lsel.draw(canvas, paint)
+            animator.animate {
+                lsel.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lsel.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
