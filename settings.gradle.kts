@@ -26,3 +26,4 @@ rootProject.name = "KotlinGraphicsProject8"
 include(":app")
 include(":arcconcrotdownview")
 include(":linebentsidesweepview")
+include(":linesweepencloseleftview")
