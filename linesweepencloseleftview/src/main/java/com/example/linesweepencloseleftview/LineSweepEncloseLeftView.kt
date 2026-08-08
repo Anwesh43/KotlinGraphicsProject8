@@ -217,4 +217,12 @@ class LineSweepEncloseLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineSweepEncloseLeftView {
+            val view : LineSweepEncloseLeftView = LineSweepEncloseLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
