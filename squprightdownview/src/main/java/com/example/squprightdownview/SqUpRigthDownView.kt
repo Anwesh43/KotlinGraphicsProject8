@@ -182,4 +182,27 @@ class SqUpRightDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : SqUpRightDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val surd : SqUpRightDown = SqUpRightDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            surd.draw(canvas, paint)
+            animator.animate {
+                surd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            surd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
