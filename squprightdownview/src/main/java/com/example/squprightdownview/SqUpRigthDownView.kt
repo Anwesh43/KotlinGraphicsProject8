@@ -207,4 +207,12 @@ class SqUpRightDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : SqUpRightDownView {
+            val view : SqUpRightDownView = SqUpRightDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
