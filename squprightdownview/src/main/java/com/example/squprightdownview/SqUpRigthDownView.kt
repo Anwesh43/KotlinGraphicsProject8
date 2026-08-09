@@ -16,7 +16,7 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 5
+val parts : Int = 4
 val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
@@ -42,7 +42,7 @@ fun Canvas.drawSqUpRightDown(scale : Float, w : Float, h : Float, paint : Paint)
     }
     drawXY(w / 2 + (w / 2 - size) * dsc(2), h / 2 - h * 0.5f * (1 - dsc(0)) + h * 0.5f * dsc(3)) {
         rotate(rot * dsc(1))
-        drawRect(RectF(-size, -size, size, size), paint)
+        drawRect(RectF(-size, -size, 0f, 0f), paint)
     }
 }
 
