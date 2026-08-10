@@ -51,7 +51,7 @@ fun Canvas.drawLineDropBentRight(scale : Float, w : Float, h : Float, paint : Pa
     }
 }
 
-fun Canvas.dawLDBRNode(i : Int, scale : Float, paint : Paint) {
+fun Canvas.drawLDBRNode(i : Int, scale : Float, paint : Paint) {
     val w : Float = width.toFloat()
     val h : Float = height.toFloat()
     paint.color = colors[i].toColorInt()
@@ -121,6 +121,47 @@ class LineDropBentRightView(ctx : Context) : View(ctx) {
             if (animated) {
                 animated = false
             }
+        }
+    }
+
+    data class LDBRNode(var i : Int = 0, val state : State = State()) {
+
+        private var next : LDBRNode? = null
+        private var prev : LDBRNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = LDBRNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawLDBRNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : LDBRNode {
+            var curr : LDBRNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
         }
     }
 }
