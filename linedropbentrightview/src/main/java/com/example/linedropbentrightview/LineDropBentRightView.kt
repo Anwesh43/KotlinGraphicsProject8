@@ -187,4 +187,27 @@ class LineDropBentRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineDropBentRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val ldbr : LineDropBentRight = LineDropBentRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ldbr.draw(canvas, paint)
+            animator.animate {
+                ldbr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ldbr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
