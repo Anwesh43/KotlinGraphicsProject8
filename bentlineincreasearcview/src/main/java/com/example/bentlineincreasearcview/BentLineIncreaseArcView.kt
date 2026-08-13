@@ -57,7 +57,7 @@ fun Canvas.drawBLIANode(i : Int, scale : Float, paint : Paint) {
     val h : Float = height.toFloat()
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
-    paint.strokeWidth = Math.min(w, h) / sizeFactor
+    paint.strokeWidth = Math.min(w, h) / strokeFactor
     paint.style = Paint.Style.STROKE
     drawBentLineIncreaseArc(scale, w, h, paint)
 }
