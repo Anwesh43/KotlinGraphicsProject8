@@ -188,4 +188,27 @@ class BentLineIncreaseArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BentLineIncreaseArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val blia : BentLineIncreaseArc = BentLineIncreaseArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            blia.draw(canvas, paint)
+            animator.animate {
+                blia.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            blia.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
