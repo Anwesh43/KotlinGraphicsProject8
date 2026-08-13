@@ -213,4 +213,12 @@ class BentLineIncreaseArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : BentLineIncreaseArcView {
+            val view : BentLineIncreaseArcView = BentLineIncreaseArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
