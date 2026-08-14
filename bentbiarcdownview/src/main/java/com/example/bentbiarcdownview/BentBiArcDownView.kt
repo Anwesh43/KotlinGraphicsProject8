@@ -242,4 +242,12 @@ class BentBiArcDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BentBiArcDownView {
+            val view : BentBiArcDownView = BentBiArcDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
