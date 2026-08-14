@@ -22,10 +22,72 @@ val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
-val rot : Float = 90f
+val rot : Float = -90f
 val bentDeg : Float = -45f
+val sweepDeg : Float = -225f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
 fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
 
+fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
+    save()
+    translate(x, y)
+    cb()
+    restore()
+}
+
+fun Canvas.scaleXY(sx : Float, sy : Float, cb : () -> Unit) {
+    drawXY(0f, 0f) {
+        scale(sx, sy)
+        cb()
+    }
+}
+
+fun Canvas.drawBentBiArcDown(scale : Float, w : Float, h : Float, paint : Paint) {
+    val size : Float = Math.min(w, h) / sizeFactor
+    val dsc : (Int) -> Float = {
+        scale.divideScale(it, parts)
+    }
+    drawXY(w / 2, h / 2 + (h / 2) * dsc(6)) {
+        for (j in 0..1) {
+            drawXY(0f, 0f) {
+                rotate(rot * (1f - 2 * j) * dsc(5))
+                scaleXY(1f - 2 * j, 1f) {
+                    drawXY(0f, 0f) {
+
+                        drawXY(-size, 0f) {
+                            rotate(bentDeg + sweepDeg * dsc(4))
+                            drawLine(
+                                0f,
+                                -size * (1 - dsc(0)) * (1 - j),
+                                0f,
+                                -size * ((1 - j) + dsc(3) * j),
+                                paint
+                            )
+                        }
+                    }
+                }
+                drawXY(-size, 0f) {
+                    drawArc(
+                        RectF(0f, -size / 2, size, size / 2),
+                        180f,
+                        180f * dsc(j + 1),
+                        false,
+                        paint
+                    )
+                }
+            }
+        }
+    }
+}
+
+fun Canvas.drawBBADNode(i : Int, scale : Float, paint : Paint) {
+    val w : Float = width.toFloat()
+    val h : Float = height.toFloat()
+    paint.color = colors[i].toColorInt()
+    paint.strokeCap = Paint.Cap.ROUND
+    paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
+    drawBentBiArcDown(scale, w, h, paint)
+}
