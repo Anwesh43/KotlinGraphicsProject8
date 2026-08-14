@@ -68,7 +68,7 @@ fun Canvas.drawBentBiArcDown(scale : Float, w : Float, h : Float, paint : Paint)
                         }
                     }
                 }
-                drawXY(-size, 0f) {
+                drawXY(-size + size * j, 0f) {
                     drawArc(
                         RectF(0f, -size / 2, size, size / 2),
                         180f,
