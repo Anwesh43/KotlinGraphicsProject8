@@ -204,7 +204,7 @@ class BentBiArcDownView(ctx : Context) : View(ctx) {
             curr.draw(canvas, paint)
         }
 
-        fun udpate(cb : (Float) -> Unit) {
+        fun update(cb : (Float) -> Unit) {
             curr.update {
                 curr = curr.getNext(dir) {
                     dir *= -1
@@ -215,6 +215,29 @@ class BentBiArcDownView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : BentBiArcDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val bbad : BentBiArcDown = BentBiArcDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bbad.draw(canvas, paint)
+            animator.animate {
+                bbad.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bbad.startUpdating {
+                animator.start()
+            }
         }
     }
 }
