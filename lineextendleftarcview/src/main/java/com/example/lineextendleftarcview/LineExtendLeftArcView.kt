@@ -190,4 +190,27 @@ class LineExtendLeftArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineExtendLeftArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lela : LineExtendLeftArc = LineExtendLeftArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lela.draw(canvas, paint)
+            animator.animate {
+                lela.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lela.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
