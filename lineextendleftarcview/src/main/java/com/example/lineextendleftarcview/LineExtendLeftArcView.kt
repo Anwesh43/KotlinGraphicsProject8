@@ -215,4 +215,12 @@ class LineExtendLeftArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineExtendLeftArcView {
+            val view : LineExtendLeftArcView = LineExtendLeftArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
