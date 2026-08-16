@@ -215,4 +215,12 @@ class LineExtendArcCloseView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineExtendArcCloseView {
+            val view : LineExtendArcCloseView = LineExtendArcCloseView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
