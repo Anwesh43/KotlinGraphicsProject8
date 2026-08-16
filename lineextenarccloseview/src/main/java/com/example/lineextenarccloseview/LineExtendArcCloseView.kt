@@ -190,4 +190,27 @@ class LineExtendArcCloseView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineExtendArcCloseView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val leac : LineExtendArcClose = LineExtendArcClose(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            leac.draw(canvas, paint)
+            animator.animate {
+                leac.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            leac.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
