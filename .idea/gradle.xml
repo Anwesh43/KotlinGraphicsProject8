@@ -11,9 +11,12 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/arcconcrotdownview" />
+            <option value="$PROJECT_DIR$/bentbiarcdownview" />
             <option value="$PROJECT_DIR$/bentlineincreasearcview" />
             <option value="$PROJECT_DIR$/linebentsidesweepview" />
             <option value="$PROJECT_DIR$/linedropbentrightview" />
+            <option value="$PROJECT_DIR$/lineextenarccloseview" />
+            <option value="$PROJECT_DIR$/lineextendleftarcview" />
             <option value="$PROJECT_DIR$/linesweepencloseleftview" />
             <option value="$PROJECT_DIR$/squprightdownview" />
           </set>
