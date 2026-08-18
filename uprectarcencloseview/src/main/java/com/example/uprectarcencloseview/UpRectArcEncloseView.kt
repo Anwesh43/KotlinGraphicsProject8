@@ -189,4 +189,27 @@ class UpRectArcEncloseView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : UpRectArcEncloseView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val urae : UpRectArcEnclose = UpRectArcEnclose(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            urae.draw(canvas, paint)
+            animator.animate {
+                urae.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            urae.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
