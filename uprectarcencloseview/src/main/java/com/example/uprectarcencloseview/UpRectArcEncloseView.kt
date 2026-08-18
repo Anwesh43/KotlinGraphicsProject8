@@ -47,8 +47,8 @@ fun Canvas.drawUpRectArcEnclose(scale : Float, w : Float, h : Float, paint : Pai
             drawXY(-size, 0f) {
                 drawLine(0f, 0f, 0f, size * dsc(1), paint)
             }
-            drawArc(RectF(-size, -size, size, size), 180f, 90f * dsc(2), false, paint)
         }
+        drawArc(RectF(-size, -size, size, size), 180f, 90f * dsc(2), false, paint)
     }
 }
 
@@ -64,7 +64,6 @@ fun Canvas.drawURAENode(i : Int, scale : Float, paint : Paint) {
 }
 
 class UpRectArcEncloseView(ctx : Context) : View(ctx) {
-
     private val renderer : Renderer = Renderer(this)
 
     override fun onDraw(canvas : Canvas) {
