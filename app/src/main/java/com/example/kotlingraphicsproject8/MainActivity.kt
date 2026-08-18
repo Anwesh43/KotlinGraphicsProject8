@@ -12,13 +12,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.kotlingraphicsproject8.ui.theme.KotlinGraphicsProject8Theme
-import com.example.lineextenarccloseview.LineExtendArcCloseView
+import com.example.uprectarcencloseview.UpRectArcEncloseView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        LineExtendArcCloseView.create(this)
+        UpRectArcEncloseView.create(this)
     }
 }
 
