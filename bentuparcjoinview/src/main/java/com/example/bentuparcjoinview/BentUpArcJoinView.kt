@@ -144,10 +144,7 @@ class BentUpArcJoinView(ctx : Context) : View(ctx) {
         }
 
         fun draw(canvas : Canvas, paint : Paint) {
-            if (i < colors.size - 1) {
-                next = BUAJNode(i + 1)
-                next?.prev = this
-            }
+            canvas.drawBUAJNode(i, state.scale, paint)
         }
 
         fun update(cb : (Float) -> Unit) {
