@@ -61,3 +61,19 @@ fun Canvas.drawBUAJNode(i : Int, scale : Float, paint : Paint) {
     paint.style = Paint.Style.STROKE
     drawBentUpArcJoin(scale, w, h, paint)
 }
+
+class BentUpArcJoinView(ctx : Context) : View(ctx) {
+
+    override fun onDraw(canvs : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+        }
+        return true
+    }
+}
