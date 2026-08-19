@@ -124,4 +124,48 @@ class BentUpArcJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class BUAJNode(var i : Int = 0, val state : State = State()) {
+
+        private var next : BUAJNode? = null
+        private var prev : BUAJNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = BUAJNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            if (i < colors.size - 1) {
+                next = BUAJNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : BUAJNode {
+            var curr : BUAJNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
