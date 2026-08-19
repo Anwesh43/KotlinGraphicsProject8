@@ -216,4 +216,12 @@ class BentUpArcJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BentUpArcJoinView {
+            val view : BentUpArcJoinView = BentUpArcJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
