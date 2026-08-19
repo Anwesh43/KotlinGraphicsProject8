@@ -27,7 +27,7 @@ val bentDeg : Float = 45f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
-fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n))
+fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
 
 fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
     save()
@@ -41,11 +41,11 @@ fun Canvas.drawBentUpArcJoin(scale : Float, w : Float, h : Float, paint : Paint)
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h / 2) {
+    drawXY(w / 2, h / 2 - (h / 2) * dsc(4)) {
         for (j in 0..1) {
             drawXY(-w * 0.5f * (1 - dsc(0)), 0f) {
                 rotate(bentDeg * (1 - j) * dsc(3) + rot * dsc(1) * j)
-                drawLine(0f, 0f, 0f, -size, paint)
+                drawLine(0f, 0f,  -size, 0f, paint)
             }
         }
         drawArc(RectF(-size, -size, size, size), 180f + bentDeg * dsc(3), rot * dsc(2) - bentDeg * dsc(3), false, paint)
