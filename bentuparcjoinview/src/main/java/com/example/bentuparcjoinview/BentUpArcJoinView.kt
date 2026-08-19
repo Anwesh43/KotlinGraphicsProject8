@@ -191,4 +191,27 @@ class BentUpArcJoinView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BentUpArcJoinView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val buaj : BentUpArcJoin = BentUpArcJoin(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            buaj.draw(canvas, paint)
+            animator.animate {
+                buaj.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            buaj.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
