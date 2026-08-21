@@ -190,4 +190,27 @@ class LineBentQuartArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineBentQuartArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lbqa : LineBentQuartArc = LineBentQuartArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lbqa.draw(canvas, paint)
+            animator.animate {
+                lbqa.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lbqa.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
