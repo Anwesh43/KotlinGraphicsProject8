@@ -215,4 +215,12 @@ class LineBentQuartArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineBentQuartArcView {
+            val view : LineBentQuartArcView = LineBentQuartArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
