@@ -44,10 +44,18 @@ fun Canvas.drawLineTouchSemiArc(scale : Float, w : Float, h : Float, paint : Pai
         rotate(rot * dsc(3))
         for (j in 0..1) {
             drawXY(-size + 2 * size * j, -size * j) {
-                drawLine(0f, 0f, 0f, -size * dsc(0) * (1f - 2 * j), paint)
+                drawLine(0f, 0f, 0f, -size * dsc(j * 2) * (1f - 2 * j), paint)
             }
         }
-        drawArc(RectF(-size, -size, size, size), 180f * (1 - dsc(1)), 180f * dsc(1), false, paint)
+        drawXY(0f, -size) {
+            drawArc(
+                RectF(-size, -size, size, size),
+                180f * (1 - dsc(1)),
+                180f * dsc(1),
+                false,
+                paint
+            )
+        }
     }
 }
 
