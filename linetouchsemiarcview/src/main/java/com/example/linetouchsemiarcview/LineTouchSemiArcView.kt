@@ -96,7 +96,7 @@ class LineTouchSemiArcView(ctx : Context) : View(ctx) {
         }
     }
 
-    data class Aniamtor(var view : View, var animated : Boolean = false) {
+    data class Animator(var view : View, var animated : Boolean = false) {
 
         fun animate(cb : () -> Unit) {
             if (animated) {
@@ -185,6 +185,29 @@ class LineTouchSemiArcView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : LineTouchSemiArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val ltsa : LineTouchSemiArc = LineTouchSemiArc(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ltsa.draw(canvas, paint)
+            animator.animate {
+                ltsa.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ltsa.startUpdating {
+                animator.start()
+            }
         }
     }
 }
