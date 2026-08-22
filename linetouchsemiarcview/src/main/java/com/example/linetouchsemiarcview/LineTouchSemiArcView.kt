@@ -212,4 +212,12 @@ class LineTouchSemiArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineTouchSemiArcView {
+            val view : LineTouchSemiArcView = LineTouchSemiArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
