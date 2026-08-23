@@ -218,4 +218,12 @@ class CatchBentLineArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : CatchBentLineArcView {
+            val view : CatchBentLineArcView = CatchBentLineArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
