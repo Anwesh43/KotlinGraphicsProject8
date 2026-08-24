@@ -213,5 +213,13 @@ class LineUpArcLeftView(ctx : Context) : View(ctx)  {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineUpArcLeftView {
+            val view : LineUpArcLeftView = LineUpArcLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
 
