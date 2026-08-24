@@ -188,5 +188,28 @@ class LineUpArcLeftView(ctx : Context) : View(ctx)  {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineUpArcLeftView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lual : LineUpArcLeft = LineUpArcLeft(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lual.draw(canvas, paint)
+            animator.animate {
+                lual.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lual.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
 
