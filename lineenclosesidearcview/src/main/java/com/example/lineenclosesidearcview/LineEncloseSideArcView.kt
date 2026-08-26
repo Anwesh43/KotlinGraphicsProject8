@@ -198,4 +198,27 @@ class LineEncloseSideArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineEncloseSideArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val lesa : LineEncloseSideArc = LineEncloseSideArc(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lesa.draw(canvas, paint)
+            animator.animate {
+                lesa.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lesa.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
