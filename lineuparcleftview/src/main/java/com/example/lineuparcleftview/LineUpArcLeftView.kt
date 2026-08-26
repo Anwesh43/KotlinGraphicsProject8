@@ -41,9 +41,9 @@ fun Canvas.drawLineUpArcLeft(scale : Float, w : Float, h : Float, paint : Paint)
         scale.divideScale(it, parts)
     }
     drawXY(w / 2 - (w / 2) * dsc(4), h / 2) {
-        drawXY(0f, 0f) {
+        drawXY(0f, -size) {
             rotate(rot * dsc(2))
-            drawLine(0f, 0f, 0f, -size * dsc(0), paint)
+            drawLine(0f, size * (1 - dsc(0)), 0f, size, paint)
         }
         drawArc(RectF(-2 * size, -2 * size, 0f, 0f), 0f, 90f * dsc(1), false, paint)
         drawXY(-size, -size) {
