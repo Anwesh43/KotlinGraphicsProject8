@@ -43,7 +43,7 @@ fun Canvas.drawLineBentRotArc(scale : Float, w : Float, h : Float, paint : Paint
     }
     drawXY(w / 2 + (w / 2) * dsc(4), h / 2) {
         drawXY(0f, 0f) {
-            rotate(bentDeg)
+            rotate(-bentDeg)
             drawLine(0f, 0f, size * dsc(0), 0f, paint)
         }
         drawArc(RectF(-size, -size, size, size), -bentDeg, bentDeg * dsc(1), false, paint)
