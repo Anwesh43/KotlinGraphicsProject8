@@ -211,4 +211,12 @@ class StepArcHalfLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : StepArcHalfLeftView {
+            val view : StepArcHalfLeftView = StepArcHalfLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
