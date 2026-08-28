@@ -42,8 +42,8 @@ fun Canvas.drawStepArcHalfLeftArc(scale : Float, w : Float, h : Float, paint : P
         scale.divideScale(it, parts)
     }
     drawXY(w / 2 - (w / 2) * dsc(4), h / 2) {
-        drawXY(0f, -size) {
-            drawLine(size * dsc(2), size * dsc(2), size * (dsc(0) - dsc(2)), size * (dsc(0) - dsc(2)), paint)
+        drawXY(0f, -size + size * dsc(2)) {
+            drawLine(size * dsc(2), 0f, size * dsc(0), size * (dsc(0) - dsc(2)), paint)
         }
         drawArc(RectF(-size, -size, size, size), deg * dsc(3), rot * dsc(1) - deg * dsc(3), false, paint)
 
