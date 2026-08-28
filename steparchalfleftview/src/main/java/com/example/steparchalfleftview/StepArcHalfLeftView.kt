@@ -186,4 +186,27 @@ class StepArcHalfLeftView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : StepArcHalfLeftView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val sahl : StepArcHalfLeft = StepArcHalfLeft(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            sahl.draw(canvas, paint)
+            animator.animate {
+                sahl.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            sahl.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
