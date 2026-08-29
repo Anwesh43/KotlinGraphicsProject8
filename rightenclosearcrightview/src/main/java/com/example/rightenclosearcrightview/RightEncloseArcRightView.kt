@@ -188,4 +188,27 @@ class RightEncloseArcRightView(ctx : Context) :View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : RightEncloseArcRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val rear : RightEncloseArcRight = RightEncloseArcRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            rear.draw(canvas, paint)
+            animator.animate {
+                rear.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            rear.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
