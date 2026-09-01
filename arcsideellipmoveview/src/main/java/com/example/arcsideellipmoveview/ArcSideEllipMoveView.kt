@@ -211,4 +211,13 @@ class ArcSideEllipMoveView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : ArcSideEllipMoveView {
+            val view : ArcSideEllipMoveView = ArcSideEllipMoveView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
