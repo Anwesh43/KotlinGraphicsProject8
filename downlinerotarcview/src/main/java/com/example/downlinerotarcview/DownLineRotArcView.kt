@@ -212,4 +212,13 @@ class DownLineRotArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : DownLineRotArcView {
+            val view : DownLineRotArcView = DownLineRotArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
