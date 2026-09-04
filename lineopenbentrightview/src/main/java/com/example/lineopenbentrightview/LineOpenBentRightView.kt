@@ -214,4 +214,12 @@ class LineOpenBentRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineOpenBentRightView {
+            val view : LineOpenBentRightView = LineOpenBentRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
