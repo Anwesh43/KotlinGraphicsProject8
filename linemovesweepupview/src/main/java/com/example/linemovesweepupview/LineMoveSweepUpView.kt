@@ -213,4 +213,12 @@ class LineMoveSweepUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+     companion object {
+         fun create(activity : Activity) : LineMoveSweepUpView {
+             val view : LineMoveSweepUpView = LineMoveSweepUpView(activity)
+             activity.setContentView(view)
+             return view
+         }
+     }
 }
