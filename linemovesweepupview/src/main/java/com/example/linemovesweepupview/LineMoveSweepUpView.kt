@@ -45,7 +45,7 @@ fun Canvas.drawLineMoveSweepUp(scale : Float, w : Float, h : Float, paint : Pain
         for (j in 0..1) {
             drawXY(0f, 0f) {
                 rotate(deg * dsc(1) + rot * j * dsc(2))
-                drawLine(0f, 0f, 0f, -size, paint)
+                drawLine(0f, 0f, -size, 0f, paint)
             }
         }
         drawArc(RectF(-size, -size, size, size), -90f, rot * dsc(2), false, paint)
