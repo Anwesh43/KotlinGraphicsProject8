@@ -102,7 +102,7 @@ class LineOpenBentRightView(ctx : Context) : View(ctx) {
 
     data class Animator(var view : View, var animated : Boolean = false) {
 
-        fun animate() {
+        fun animate(cb : () -> Unit) {
             if (animated) {
                 cb()
                 try {
@@ -192,7 +192,7 @@ class LineOpenBentRightView(ctx : Context) : View(ctx) {
         }
     }
 
-    data class Renderer(Var view : LineOpenBentRightView) {
+    data class Renderer(var view : LineOpenBentRightView) {
 
         private val lobr : LineOpenBentRight = LineOpenBentRight(0)
         private val animator : Animator = Animator(view)
