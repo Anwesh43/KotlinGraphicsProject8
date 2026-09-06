@@ -215,4 +215,12 @@ class LineOpenArcRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineOpenArcRightView {
+            val view : LineOpenArcRightView = LineOpenArcRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
