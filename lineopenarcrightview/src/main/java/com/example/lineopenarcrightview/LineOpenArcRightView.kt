@@ -190,4 +190,27 @@ class LineOpenArcRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineOpenArcRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val loar : LineOpenArcRight = LineOpenArcRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            loar.draw(canvas, paint)
+            animator.animate {
+                loar.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            loar.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
