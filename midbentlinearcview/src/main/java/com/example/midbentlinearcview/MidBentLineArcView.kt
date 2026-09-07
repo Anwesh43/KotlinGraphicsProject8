@@ -211,4 +211,12 @@ class MidBentLineArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : MidBentLineArcView {
+            val view : MidBentLineArcView = MidBentLineArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
