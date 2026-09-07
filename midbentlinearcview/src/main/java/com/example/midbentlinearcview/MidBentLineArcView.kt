@@ -41,7 +41,7 @@ fun Canvas.drawMidBentLineArc(scale : Float, w  : Float, h : Float, paint : Pain
         scale.divideScale(it, parts)
     }
     drawXY(w / 2 + (w / 2) * dsc(4), h / 2) {
-        drawXY(-w * 0.25f * (1 - dsc(2)),  -h * 0.25f * (1 - dsc(0))) {
+        drawXY(-w * 0.25f * (1 - dsc(2)),  -h * 0.5f * (1 - dsc(0))) {
             rotate(rot * dsc(1))
             drawLine(0f, 0f, 0f, -size, paint)
         }
