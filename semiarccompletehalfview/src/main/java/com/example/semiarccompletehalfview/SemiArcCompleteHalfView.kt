@@ -45,7 +45,7 @@ fun Canvas.drawSemiArcCompleteHalf(scale : Float, w : Float, h : Float, paint : 
             rotate(rot * dsc(2))
             drawArc(RectF(-size / 2, -size, size / 2, 0f), -90f, 180f * dsc(0), false, paint)
         }
-        drawArc(RectF(0f, -size / 2, size, size / 2), 0f, 180f * dsc(3), false, paint)
+        drawArc(RectF(0f, -size / 2, size, size / 2), 180f, 180f * dsc(3), false, paint)
     }
 }
 
