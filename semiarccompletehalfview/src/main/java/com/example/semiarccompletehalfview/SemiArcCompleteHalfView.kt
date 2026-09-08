@@ -210,4 +210,13 @@ class SemiArcCompleteHalfView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : SemiArcCompleteHalfView {
+            val view : SemiArcCompleteHalfView = SemiArcCompleteHalfView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
