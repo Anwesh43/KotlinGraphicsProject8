@@ -211,4 +211,12 @@ class TriEncloseCircleDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : TriEncloseCircleDownView {
+            val view : TriEncloseCircleDownView = TriEncloseCircleDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
