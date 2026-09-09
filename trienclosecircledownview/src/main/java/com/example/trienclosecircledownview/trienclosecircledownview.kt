@@ -185,6 +185,28 @@ class TriEncloseCircleDownView(ctx : Context) : View(ctx) {
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
         }
+    }
 
+    data class Renderer(var view : TriEncloseCircleDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val tecd : TriEncloseCircleDown = TriEncloseCircleDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            tecd.draw(canvas, paint)
+            animator.animate {
+                tecd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            tecd.startUpdating {
+                animator.start()
+            }
+        }
     }
 }
