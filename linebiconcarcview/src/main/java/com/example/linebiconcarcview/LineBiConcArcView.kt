@@ -211,4 +211,12 @@ class LineBiConcArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineBiConcArcView {
+            val view : LineBiConcArcView = LineBiConcArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
