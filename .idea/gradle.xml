@@ -17,10 +17,12 @@
             <option value="$PROJECT_DIR$/bentuparcjoinview" />
             <option value="$PROJECT_DIR$/catchbentlinearcview" />
             <option value="$PROJECT_DIR$/downlinerotarcview" />
+            <option value="$PROJECT_DIR$/halfarcdownrotview" />
             <option value="$PROJECT_DIR$/linebentarcjoinview" />
             <option value="$PROJECT_DIR$/linebentquartarcview" />
             <option value="$PROJECT_DIR$/linebentrotarcview" />
             <option value="$PROJECT_DIR$/linebentsidesweepview" />
+            <option value="$PROJECT_DIR$/linebiconcarcview" />
             <option value="$PROJECT_DIR$/linedropbentrightview" />
             <option value="$PROJECT_DIR$/lineenclosesidearcview" />
             <option value="$PROJECT_DIR$/lineextenarccloseview" />
@@ -31,9 +33,12 @@
             <option value="$PROJECT_DIR$/linesweepencloseleftview" />
             <option value="$PROJECT_DIR$/linetouchsemiarcview" />
             <option value="$PROJECT_DIR$/lineuparcleftview" />
+            <option value="$PROJECT_DIR$/midbentlinearcview" />
             <option value="$PROJECT_DIR$/rightenclosearcrightview" />
+            <option value="$PROJECT_DIR$/semiarccompletehalfview" />
             <option value="$PROJECT_DIR$/squprightdownview" />
             <option value="$PROJECT_DIR$/steparchalfleftview" />
+            <option value="$PROJECT_DIR$/trienclosecircledownview" />
             <option value="$PROJECT_DIR$/uprectarcencloseview" />
           </set>
         </option>
