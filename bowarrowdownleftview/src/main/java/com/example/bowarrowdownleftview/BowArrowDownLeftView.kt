@@ -210,5 +210,13 @@ class BowArrowDownLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : BowArrowDownLeftView {
+            val view : BowArrowDownLeftView = BowArrowDownLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
 
