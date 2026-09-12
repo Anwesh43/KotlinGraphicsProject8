@@ -185,5 +185,28 @@ class BowArrowDownLeftView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BowArrowDownLeftView) {
+
+        private val animator : Animator = Animator(view)
+        private val badl : BowArrowDownLeft = BowArrowDownLeft(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            badl.draw(canvas, paint)
+            animator.animate {
+                badl.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            badl.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
 
