@@ -59,4 +59,19 @@ fun Canvas.drawBADLNode(i : Int, scale : Float, paint : Paint) {
     drawBowArrowDownLeft(scale, w, h, paint)
 }
 
+class BowArrowDownLeftView(ctx : Context) : View(ctx) {
+
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+        }
+        return true
+    }
+}
 
