@@ -175,7 +175,7 @@ class UpLineArcRightView(ctx : Context) : View(ctx) {
             curr.draw(canvas, paint)
         }
 
-        fun update(cb : (Float) -> Float) {
+        fun update(cb : (Float) -> Unit) {
             curr.update {
                 curr = curr.getNext(dir) {
                     dir *= -1
@@ -186,6 +186,29 @@ class UpLineArcRightView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : UpLineArcRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val ular : UpLineArcRight = UpLineArcRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ular.draw(canvas, paint)
+            animator.animate {
+                ular.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ular.startUpdating {
+                animator.start()
+            }
         }
     }
 }
