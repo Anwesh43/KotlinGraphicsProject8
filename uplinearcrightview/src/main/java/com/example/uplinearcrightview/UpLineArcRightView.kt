@@ -165,4 +165,27 @@ class UpLineArcRightView(ctx : Context) : View(ctx) {
             return this
         }
     }
+
+    data class UpLineArcRight(var i : Int) {
+
+        private var curr : ULARNode = ULARNode(0)
+        private var dir : Int = 1
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            curr.draw(canvas, paint)
+        }
+
+        fun update(cb : () -> Float) {
+            curr.update {
+                curr = curr.getNext(dir) {
+                    dir *= -1
+                }
+                cb(it)
+            }
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            curr.startUpdating(cb)
+        }
+    }
 }
