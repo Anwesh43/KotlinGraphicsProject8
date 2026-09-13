@@ -175,7 +175,7 @@ class UpLineArcRightView(ctx : Context) : View(ctx) {
             curr.draw(canvas, paint)
         }
 
-        fun update(cb : () -> Float) {
+        fun update(cb : (Float) -> Float) {
             curr.update {
                 curr = curr.getNext(dir) {
                     dir *= -1
