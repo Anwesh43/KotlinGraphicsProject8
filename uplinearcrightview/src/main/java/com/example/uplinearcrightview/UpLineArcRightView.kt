@@ -213,4 +213,12 @@ class UpLineArcRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : UpLineArcRightView {
+            val view : UpLineArcRightView = UpLineArcRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
