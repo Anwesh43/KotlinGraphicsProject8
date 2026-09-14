@@ -189,4 +189,27 @@ class HalfArcJoinMidView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : HalfArcJoinMidView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val hajm : HalfArcJoinMid = HalfArcJoinMid(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            hajm.draw(canvas, paint)
+            animator.animate {
+                hajm.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            hajm.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
