@@ -215,4 +215,12 @@ class RotLineHalfArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : RotLineHalfArcView {
+            val view : RotLineHalfArcView = RotLineHalfArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
