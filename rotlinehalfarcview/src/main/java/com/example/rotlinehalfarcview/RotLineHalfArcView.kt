@@ -190,4 +190,27 @@ class RotLineHalfArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : RotLineHalfArcView) {
+
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val animator : Animator = Animator(view)
+        private val rlha : RotLineHalfArc = RotLineHalfArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            rlha.draw(canvas, paint)
+            animator.animate {
+                rlha.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            rlha.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
