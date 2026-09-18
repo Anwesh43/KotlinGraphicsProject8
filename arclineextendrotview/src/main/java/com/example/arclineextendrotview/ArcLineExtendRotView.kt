@@ -185,4 +185,27 @@ class ArcLineExtendRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcLineExtendRotView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val aler : ArcLineExtendRot = ArcLineExtendRot(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            aler.draw(canvas, paint)
+            animator.animate {
+                aler.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            aler.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
