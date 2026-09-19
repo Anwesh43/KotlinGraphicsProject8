@@ -215,4 +215,12 @@ class BiArcHalfMoveView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BiArcHalfMoveView {
+            val view : BiArcHalfMoveView = BiArcHalfMoveView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
