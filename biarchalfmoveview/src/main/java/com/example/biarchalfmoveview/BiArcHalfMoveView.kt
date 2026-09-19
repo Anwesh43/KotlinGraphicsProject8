@@ -190,4 +190,27 @@ class BiArcHalfMoveView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiArcHalfMoveView) {
+
+        private val bahm : BiArcHalfMove = BiArcHalfMove(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bahm.draw(canvas, paint)
+            animator.animate {
+                bahm.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bahm.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
