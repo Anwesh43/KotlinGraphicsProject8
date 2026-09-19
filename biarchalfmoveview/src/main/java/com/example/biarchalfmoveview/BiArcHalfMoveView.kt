@@ -44,9 +44,9 @@ fun Canvas.drawBiArcHalfMove(scale : Float, w : Float, h : Float, sf : Float, pa
         rotate(rot * sf * dsc(3))
         drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), -90f, 180f * dsc(0), false, paint)
         for (j in 0..1) {
-            drawXY(0f, -size / 2 + j * size * 0.5f) {
+            drawXY( size * 0.5f * j, -size / 2 + j * size * 0.5f) {
                 val ds1j : Float = dsc(1).divideScale(j, 2)
-                drawLine(0f, 0f, size * 0.5f * ds1j, size * 0.5f * ds1j * (1 - 2 * j), paint)
+                drawLine(0f, 0f, size * 0.5f * ds1j * (1 - 2 * j), size * 0.5f * ds1j, paint)
             }
         }
     }
