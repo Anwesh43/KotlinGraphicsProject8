@@ -63,3 +63,19 @@ fun Canvas.drawBAHMNode(i : Int, scale : Float, paint : Paint) {
         drawBiArcHalfMove(scale, w, h, 1f - 2 * j, paint)
     }
 }
+
+class BiArcHalfMoveView(ctx : Context) : View(ctx) {
+
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+        }
+        return true
+    }
+}
