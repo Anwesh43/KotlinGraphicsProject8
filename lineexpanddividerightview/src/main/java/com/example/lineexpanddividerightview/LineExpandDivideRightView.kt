@@ -214,4 +214,12 @@ class LineExpandDivideRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineExpandDivideRightView {
+            val view : LineExpandDivideRightView = LineExpandDivideRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
