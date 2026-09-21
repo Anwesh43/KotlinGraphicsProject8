@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/bentbiarcdownview" />
             <option value="$PROJECT_DIR$/bentlineincreasearcview" />
             <option value="$PROJECT_DIR$/bentuparcjoinview" />
+            <option value="$PROJECT_DIR$/biarchalfmoveview" />
             <option value="$PROJECT_DIR$/bowarrowdownleftview" />
             <option value="$PROJECT_DIR$/catchbentlinearcview" />
             <option value="$PROJECT_DIR$/downlinerotarcview" />
@@ -29,7 +30,9 @@
             <option value="$PROJECT_DIR$/linebiconcarcview" />
             <option value="$PROJECT_DIR$/linedropbentrightview" />
             <option value="$PROJECT_DIR$/lineenclosesidearcview" />
+            <option value="$PROJECT_DIR$/lineexpanddividerightview" />
             <option value="$PROJECT_DIR$/lineextenarccloseview" />
+            <option value="$PROJECT_DIR$/lineextendarcrotview" />
             <option value="$PROJECT_DIR$/lineextendleftarcview" />
             <option value="$PROJECT_DIR$/linemovesweepupview" />
             <option value="$PROJECT_DIR$/lineopenarcrightview" />
