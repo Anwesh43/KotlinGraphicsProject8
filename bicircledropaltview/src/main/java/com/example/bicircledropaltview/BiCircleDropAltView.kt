@@ -213,4 +213,12 @@ class BiCircleDropAltView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BiCircleDropAltView {
+            val view : BiCircleDropAltView = BiCircleDropAltView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
