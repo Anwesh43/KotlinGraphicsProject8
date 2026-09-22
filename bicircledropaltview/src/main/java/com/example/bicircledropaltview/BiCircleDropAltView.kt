@@ -166,7 +166,7 @@ class BiCircleDropAltView(ctx : Context) : View(ctx) {
         }
     }
 
-    data class BiCiecleDropAlt(var i : Int) {
+    data class BiCircleDropAlt(var i : Int) {
 
         private var curr : BCDANode = BCDANode(0)
         private var dir : Int = 1
@@ -186,6 +186,29 @@ class BiCircleDropAltView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : BiCircleDropAltView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val bcda : BiCircleDropAlt = BiCircleDropAlt(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bcda.draw(canvas, paint)
+            animator.animate {
+                bcda.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bcda.startUpdating {
+                animator.start()
+            }
         }
     }
 }
