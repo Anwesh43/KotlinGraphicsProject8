@@ -41,12 +41,13 @@ fun Canvas.drawBiCircleDropAlt(scale : Float, w : Float, h : Float, paint : Pain
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
+    val r : Float = size / 3
     drawXY(w / 2, h / 2) {
         rotate(rot * dsc(3))
         for (j in 0..1) {
-            drawXY(-w * 0.5f * (1f - 2 * j) * dsc(4), -h * 0.5f * (1 - dsc(1))) {
-                rotate(deg * dsc(2))
-                drawArc(RectF(-size / 6, 0f, size / 6, size / 3), -90f, 360f * dsc(0), false, paint)
+            drawXY(0f, -h * 0.5f * (1 - dsc(1)) + w * 0.5f * (1f - 2 * j) * dsc(4)) {
+                rotate(deg * dsc(2) * j)
+                drawArc(RectF(-r, 0f, r, 2 * r), -90f, 360f * dsc(0), false, paint)
             }
         }
     }
