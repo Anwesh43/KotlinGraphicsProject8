@@ -43,11 +43,12 @@ fun Canvas.drawSemiArcRotUp(scale : Float, w : Float, h : Float, paint : Paint) 
     }
     drawXY(w / 2, h * 0.5f * (1 - dsc(4))) {
         rotate(rot * dsc(3))
+        //drawArc(RectF(-size, -size, size, size), 0f, 180f * dsc(0), false, paint)
         for (j in 0..1) {
             drawXY(0f, 0f) {
-                rotate(deg * dsc(2))
                 drawXY(-2 * size * (1 - j), 0f) {
-                    drawArc(RectF(-2 * size, 0f, 0f, 2 * size), -90f + 180f * j, 90f * dsc(j), false, paint)
+                    rotate(deg * dsc(2) * j)
+                    drawArc(RectF(0f, -size, 2 * size, size), -90f + 270f * j, 90f * dsc(j), false, paint)
                 }
             }
         }
