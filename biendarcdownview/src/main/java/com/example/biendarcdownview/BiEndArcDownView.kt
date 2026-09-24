@@ -211,7 +211,7 @@ class BiEndArcDownView(ctx : Context) : View(ctx) {
 
         fun handleTap() {
             bead.startUpdating {
-                animator.stop()
+                animator.start()
             }
         }
     }
