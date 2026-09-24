@@ -190,4 +190,27 @@ class BiEndArcDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiEndArcDownView) {
+
+        private var bead : BiEndArcDown = BiEndArcDown(0)
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bead.draw(canvas, paint)
+            animator.animate {
+                bead.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bead.startUpdating {
+                animator.stop()
+            }
+        }
+    }
 }
