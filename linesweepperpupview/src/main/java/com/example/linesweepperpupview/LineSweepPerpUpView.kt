@@ -46,7 +46,10 @@ fun Canvas.drawLineSweepPerpUp(scale : Float, w : Float, h : Float, paint : Pain
         for (j in 0..1) {
             drawXY((w / 2) * (1 - dsc(1)), 0f) {
                 rotate(bentDeg * dsc(2) * j)
-                drawLine(0f, 0f, -size * dsc(0), 0f, paint)
+                drawXY(0f, 0f) {
+                    rotate(rot * 0.54f * (1 - dsc(0)))
+                    drawLine(0f, 0f, -size, 0f, paint)
+                }
             }
         }
         drawArc(RectF(-size, -size, size, size), 180f, bentDeg * dsc(2), false, paint)
