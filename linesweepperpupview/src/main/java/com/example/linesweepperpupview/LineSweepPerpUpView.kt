@@ -214,4 +214,12 @@ class LineSweepPerpUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineSweepPerpUpView {
+            val view : LineSweepPerpUpView = LineSweepPerpUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
