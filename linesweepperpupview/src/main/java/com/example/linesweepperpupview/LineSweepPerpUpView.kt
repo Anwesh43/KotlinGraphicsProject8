@@ -188,4 +188,27 @@ class LineSweepPerpUpView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineSweepPerpUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val lspu : LineSweepPerpUp = LineSweepPerpUp(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lspu.draw(canvas, paint)
+            animator.animate {
+                lspu.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lspu.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
