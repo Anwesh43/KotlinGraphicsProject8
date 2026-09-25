@@ -41,7 +41,7 @@ fun Canvas.drawLineSweepPerpUp(scale : Float, w : Float, h : Float, paint : Pain
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h / 2 - (h / 2) * dsc(4)) {
+    drawXY(w / 2, h / 2 + (h / 2) * dsc(4)) {
         rotate((rot + bentDeg) * dsc(3))
         for (j in 0..1) {
             drawXY((w / 2) * (1 - dsc(1)), 0f) {
