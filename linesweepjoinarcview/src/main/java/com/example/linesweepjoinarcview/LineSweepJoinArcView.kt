@@ -216,4 +216,12 @@ class LineSweepJoinArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineSweepJoinArcView {
+            val view : LineSweepJoinArcView = LineSweepJoinArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
