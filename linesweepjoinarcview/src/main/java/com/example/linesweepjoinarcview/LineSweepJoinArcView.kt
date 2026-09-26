@@ -191,4 +191,27 @@ class LineSweepJoinArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineSweepJoinArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lsja : LineSweepJoinArc = LineSweepJoinArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lsja.draw(canvas, paint)
+            animator.animate {
+                lsja.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lsja.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
