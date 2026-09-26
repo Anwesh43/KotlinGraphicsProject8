@@ -41,7 +41,7 @@ fun Canvas.drawLineSweepJoinArc(scale : Float, w : Float, h : Float, paint : Pai
     val dsc : (Int) -> Float = { scale.divideScale(it, parts) }
     drawXY(w / 2, h / 2 - (h / 2) * dsc(4)) {
         rotate(rot * dsc(3))
-        drawXY(-size - (w / 2 + size) * (1 - dsc(1)), 0f) {
+        drawXY(-size - (w / 2 - size) * (1 - dsc(1)), 0f) {
             drawArc(RectF(0f, -size, 2 * size, size), 180f, sweep * dsc(0), false, paint)
         }
         drawXY((w / 2) * (1 - dsc(1)), 0f) {
