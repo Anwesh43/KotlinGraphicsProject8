@@ -187,4 +187,27 @@ class LineSemiArcRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineSemiArcRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lsar : LineSemiArcRight = LineSemiArcRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lsar.draw(canvas, paint)
+            animator.animate {
+                lsar.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lsar.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
