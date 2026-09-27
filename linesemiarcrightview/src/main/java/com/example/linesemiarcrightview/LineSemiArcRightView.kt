@@ -212,4 +212,12 @@ class LineSemiArcRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineSemiArcRightView {
+            val view : LineSemiArcRightView = LineSemiArcRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
