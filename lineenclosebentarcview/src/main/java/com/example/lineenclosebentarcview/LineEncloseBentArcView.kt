@@ -51,7 +51,7 @@ fun Canvas.drawLineEncloseBentArc(scale : Float, w : Float, h : Float, paint : P
                         rotate(-rot)
                         drawLine(0f, 0f, size * dsc(0), 0f, paint)
                     }
-                    drawArc(RectF(-size, -size, size, size), -gapDeg, gapDeg * dsc(1), false, paint)
+                    drawArc(RectF(-size, -size, size, size), -rot, rot * dsc(1), false, paint)
                 }
             }
         }
