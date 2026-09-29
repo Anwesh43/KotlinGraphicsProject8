@@ -174,7 +174,7 @@ class EllipEncloseLineRightView(ctx : Context) : View(ctx) {
             curr.draw(canvas, paint)
         }
 
-        fun update(cb : (Float) -> Float) {
+        fun update(cb : (Float) -> Unit) {
             curr.update {
                 curr = curr.getNext(dir) {
                     dir *= -1
@@ -185,6 +185,30 @@ class EllipEncloseLineRightView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : EllipEncloseLineRightView) {
+
+        private val animator : Animator = Animator(view)
+
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val eelr : EllipEncloseLineRight = EllipEncloseLineRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            eelr.draw(canvas, paint)
+            animator.animate {
+                eelr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            eelr.startUpdating {
+                animator.start()
+            }
         }
     }
 }
