@@ -213,4 +213,12 @@ class EllipEncloseLineRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity)  : EllipEncloseLineRightView {
+            val view : EllipEncloseLineRightView = EllipEncloseLineRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
