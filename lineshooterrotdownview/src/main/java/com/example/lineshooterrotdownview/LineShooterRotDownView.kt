@@ -68,3 +68,19 @@ fun Canvas.drawLSRDNode(i : Int, scale : Float, paint : Paint) {
     paint.style = Paint.Style.STROKE
     drawLineShooterRotDown(scale, w, h, paint)
 }
+
+class LineShooterRotDownView(ctx : Context) : View(ctx) {
+
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN ->  {
+
+            }
+        }
+        return true
+    }
+}
