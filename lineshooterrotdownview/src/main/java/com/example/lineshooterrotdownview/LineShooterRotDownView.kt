@@ -221,4 +221,12 @@ class LineShooterRotDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineShooterRotDownView {
+            val view : LineShooterRotDownView = LineShooterRotDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
