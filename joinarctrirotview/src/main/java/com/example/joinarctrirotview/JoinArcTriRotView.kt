@@ -189,4 +189,27 @@ class JoinArcTriRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : JoinArcTriRotView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val jatr : JoinArcTriRot = JoinArcTriRot(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            jatr.draw(canvas, paint)
+            animator.animate {
+                jatr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            jatr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
