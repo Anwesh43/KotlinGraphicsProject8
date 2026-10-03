@@ -214,4 +214,12 @@ class JoinArcTriRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : JoinArcTriRotView {
+            val view : JoinArcTriRotView = JoinArcTriRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
