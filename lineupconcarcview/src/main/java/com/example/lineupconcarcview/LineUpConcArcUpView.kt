@@ -211,4 +211,12 @@ class LineUpConcArcUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineUpConcArcUpView {
+            val view : LineUpConcArcUpView = LineUpConcArcUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
