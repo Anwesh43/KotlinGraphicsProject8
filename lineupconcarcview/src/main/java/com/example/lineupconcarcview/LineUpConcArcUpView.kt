@@ -186,4 +186,27 @@ class LineUpConcArcUpView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineUpConcArcUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val luca : LineUpConcArcUp = LineUpConcArcUp(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            luca.draw(canvas, paint)
+            animator.animate {
+                luca.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            luca.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
