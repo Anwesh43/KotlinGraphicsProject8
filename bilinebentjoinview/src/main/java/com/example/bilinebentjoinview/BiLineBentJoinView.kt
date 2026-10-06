@@ -45,7 +45,7 @@ fun Canvas.drawBiLineBentJoin(scale : Float, w : Float, h : Float, paint : Paint
         rotate(rot * dsc(3))
         for (j in 0..1) {
             drawXY(-w * 0.25f * (1 - dsc(1)) * (1 - j), -h * 0.25f * (1 - dsc(1)) * j) {
-                rotate(bentDeg * (1 - dsc(2)))
+                rotate(bentDeg * (1 - dsc(2)) * (1f - 2 * j))
                 drawLine(0f, 0f, size * dsc(0), 0f, paint )
             }
         }
