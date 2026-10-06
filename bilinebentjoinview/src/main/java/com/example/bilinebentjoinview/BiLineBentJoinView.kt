@@ -214,4 +214,12 @@ class BiLineBentJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BiLineBentJoinView {
+            val view : BiLineBentJoinView = BiLineBentJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
