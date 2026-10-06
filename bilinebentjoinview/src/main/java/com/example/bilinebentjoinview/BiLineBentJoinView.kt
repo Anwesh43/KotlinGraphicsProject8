@@ -189,4 +189,27 @@ class BiLineBentJoinView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiLineBentJoinView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val blbj : BiLineBentJoin = BiLineBentJoin(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            blbj.draw(canvas, paint)
+            animator.animate {
+                blbj.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            blbj.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
