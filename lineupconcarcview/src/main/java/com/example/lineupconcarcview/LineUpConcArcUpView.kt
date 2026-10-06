@@ -44,8 +44,8 @@ fun Canvas.drawLineUpConcArc(scale : Float, w : Float, h : Float, paint : Paint)
         rotate(rot * dsc(3))
         drawLine(0f, 0f, 0f, -size * dsc(0), paint)
         for (j in 0..1) {
-            val rFactor : Float = (size / (1  + j))
-            drawArc(RectF(-size / (2 * rFactor), -size / rFactor, size / (2 * rFactor), 0f), 90f, 180f * dsc(j), false, paint)
+            val rFactor : Float = 1f + j
+            drawArc(RectF(-size / (2 * rFactor), -size / rFactor, size / (2 * rFactor), 0f), 90f, 180f * dsc(1 + j), false, paint)
         }
     }
 }
