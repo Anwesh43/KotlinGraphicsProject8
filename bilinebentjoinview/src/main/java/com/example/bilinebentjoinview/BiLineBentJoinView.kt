@@ -27,7 +27,7 @@ val bentDeg : Float = 45f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
-fun Float.divideScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
+fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
 
 fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
     save()
@@ -44,7 +44,7 @@ fun Canvas.drawBiLineBentJoin(scale : Float, w : Float, h : Float, paint : Paint
     drawXY(w / 2, h / 2 + (h / 2) * dsc(4)) {
         rotate(rot * dsc(3))
         for (j in 0..1) {
-            drawXY(-w * 0.25f * (1 - dsc(1)), -h * 0.25f * (1 - dsc(1))) {
+            drawXY(-w * 0.25f * (1 - dsc(1)) * (1 - j), -h * 0.25f * (1 - dsc(1)) * j) {
                 rotate(bentDeg * (1 - dsc(2)))
                 drawLine(0f, 0f, size * dsc(0), 0f, paint )
             }
