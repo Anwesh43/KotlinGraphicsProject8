@@ -23,7 +23,42 @@ val sizeFactor : Float = 5.9f
 val rot : Float = 90f
 val backColor : Int = "#BDBDBD".toColorInt()
 val delay : Long = 20
+val bentDeg : Float = 45f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
 fun Float.divideScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
+
+fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
+    save()
+    translate(x, y)
+    cb()
+    restore()
+}
+
+fun Canvas.drawBiLineBentJoin(scale : Float, w : Float, h : Float, paint : Paint) {
+    val size : Float = Math.min(w, h) / sizeFactor
+    val dsc : (Int) -> Float = {
+        scale.divideScale(it, parts)
+    }
+    drawXY(w / 2, h / 2 + (h / 2) * dsc(4)) {
+        rotate(rot * dsc(3))
+        for (j in 0..1) {
+            drawXY(-w * 0.25f * (1 - dsc(1)), -h * 0.25f * (1 - dsc(1))) {
+                rotate(bentDeg * (1 - dsc(2)))
+                drawLine(0f, 0f, size * dsc(0), 0f, paint )
+            }
+        }
+
+    }
+}
+
+fun Canvas.drawBLBJNode(i : Int, scale : Float, paint : Paint) {
+    val w : Float = width.toFloat()
+    val h : Float = height.toFloat()
+    paint.color = colors[i].toColorInt()
+    paint.strokeCap = Paint.Cap.ROUND
+    paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
+    drawBiLineBentJoin(scale, w, h, paint)
+}
