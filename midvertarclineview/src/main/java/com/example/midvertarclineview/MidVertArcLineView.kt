@@ -189,4 +189,27 @@ class MidVertArcLineView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : MidVertArcLineView) {
+
+        private val animator : Animator = Animator(view)
+        private val mval : MidVertArcLine = MidVertArcLine(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            mval.draw(canvas, paint)
+            animator.animate {
+                mval.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            mval.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
