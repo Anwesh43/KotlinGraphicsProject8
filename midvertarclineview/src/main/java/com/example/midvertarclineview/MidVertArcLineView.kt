@@ -214,4 +214,12 @@ class MidVertArcLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : MidVertArcLineView {
+            val view : MidVertArcLineView = MidVertArcLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
