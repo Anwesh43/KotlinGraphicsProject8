@@ -182,4 +182,27 @@ class ArcStrokeFromBottomView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcStrokeFromBottomView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val afsb : ArcStrokeFromBottom = ArcStrokeFromBottom(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            afsb.draw(canvas, paint)
+            animator.animate {
+                afsb.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            afsb.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
