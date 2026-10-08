@@ -213,7 +213,6 @@ class ArcStrokeFromBottomView(ctx : Context) : View(ctx) {
             val view : ArcStrokeFromBottomView = ArcStrokeFromBottomView(activity)
             activity.setContentView(view)
             return view
-
         }
     }
 }
