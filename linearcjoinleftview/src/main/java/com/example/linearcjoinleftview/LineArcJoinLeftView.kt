@@ -212,4 +212,12 @@ class LineArcJoinLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineArcJoinLeftView {
+            val view : LineArcJoinLeftView = LineArcJoinLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
