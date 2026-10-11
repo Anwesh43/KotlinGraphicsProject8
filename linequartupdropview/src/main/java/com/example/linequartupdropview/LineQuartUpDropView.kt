@@ -210,4 +210,12 @@ class LineQuartUpDropView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity  : Activity) : LineQuartUpDropView {
+            val view : LineQuartUpDropView = LineQuartUpDropView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
