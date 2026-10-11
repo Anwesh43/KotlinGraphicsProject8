@@ -185,4 +185,27 @@ class LineQuartUpDropView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineQuartUpDropView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lqud : LineQuartUpDrop = LineQuartUpDrop(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lqud.draw(canvas, paint)
+            animator.animate {
+                lqud.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lqud.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
