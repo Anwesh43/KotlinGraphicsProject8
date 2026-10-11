@@ -44,7 +44,7 @@ fun Canvas.drawLineQuartUpDrop(scale : Float, w : Float, h : Float, paint : Pain
         rotate(rot * dsc(3))
         drawXY(-(w / 2 - size) * (1 - dsc(2)), 0f) {
             drawLine(0f, 0f, 0f, -size * dsc(0), paint)
-            drawArc(RectF(-2 * size, -size, 0f, size), 0f, 90f * dsc(1), false, paint)
+            drawArc(RectF(-2 * size, -2 * size, 0f, 0f), 0f, 90f * dsc(1), false, paint)
         }
     }
 }
