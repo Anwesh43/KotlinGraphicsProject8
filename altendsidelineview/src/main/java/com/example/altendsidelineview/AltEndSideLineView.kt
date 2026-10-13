@@ -189,4 +189,27 @@ class AltEndSideLineView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : AltEndSideLineView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val aesl : AltEndSideLine = AltEndSideLine(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            aesl.draw(canvas, paint)
+            animator.animate {
+                aesl.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            aesl.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
