@@ -125,4 +125,45 @@ class AltEndSideLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class AESLNode(var i : Int = 0, val state : State = State()) {
+
+        private var next : AESLNode? = null
+        private var prev : AESLNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = AESLNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawAESLNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : AESLNode {
+            var curr : AESLNode? = prev
+            if (dir === 1) {
+                curr = prev
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
