@@ -22,7 +22,7 @@ val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
-val rot : Float = 90f
+val rot : Float = 180f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int): Float = Math.max(0f, this - i * n.inverse())
@@ -41,7 +41,7 @@ fun Canvas.drawAltEndSideLine(scale : Float, w : Float, h : Float, paint : Paint
         scale.divideScale(it, parts)
     }
     drawXY(w / 2 + (w / 2) * dsc(4), h / 2) {
-        drawXY(size, 0f) {
+        drawXY(-size, 0f) {
             drawLine(0f, 0f, 0f, size * dsc(3), paint)
         }
         for (j in 0..1) {
