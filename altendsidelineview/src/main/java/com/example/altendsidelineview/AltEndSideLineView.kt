@@ -214,4 +214,12 @@ class AltEndSideLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : AltEndSideLineView {
+            val view : AltEndSideLineView = AltEndSideLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
