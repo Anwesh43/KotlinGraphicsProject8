@@ -26,6 +26,7 @@
             <option value="$PROJECT_DIR$/catchbentlinearcview" />
             <option value="$PROJECT_DIR$/downlinerotarcview" />
             <option value="$PROJECT_DIR$/ellipencloselinerightview" />
+            <option value="$PROJECT_DIR$/halfarcbentlineview" />
             <option value="$PROJECT_DIR$/halfarcdownrotview" />
             <option value="$PROJECT_DIR$/halfarcmidjoinview" />
             <option value="$PROJECT_DIR$/joinarctrirotview" />
