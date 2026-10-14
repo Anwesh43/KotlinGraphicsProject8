@@ -44,9 +44,9 @@ fun Canvas.drawHalfArcBentLine(scale : Float, w : Float, h : Float, paint : Pain
     }
     drawXY(w / 2 + (w / 2) * dsc(4), h / 2) {
         rotate(rot * dsc(3))
-        drawArc(RectF(-size, -size, size, size), -90f, 180f * dsc(0), false, paint)
+        drawArc(RectF(-size, -2 * size, size, 0f), -90f, 180f * dsc(0), false, paint)
         drawXY(0f, 0f) {
-            rotate(bentDeg * (1 - dsc(2)))
+            rotate(-bentDeg * (1 - dsc(2)))
             drawLine(0f, 0f, 0f, -size * dsc(1), paint)
         }
     }
@@ -58,6 +58,7 @@ fun Canvas.drawHABLNode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.style = Paint.Style.STROKE
+    paint.strokeWidth = Math.min(w, h) / strokeFactor
     drawHalfArcBentLine(scale, w, h, paint)
 }
 
