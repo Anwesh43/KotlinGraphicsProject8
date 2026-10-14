@@ -8,6 +8,7 @@ import android.graphics.RectF
 import androidx.core.graphics.toColorInt
 import android.app.Activity
 import android.content.Context
+import android.util.Half
 
 val colors : Array<String> = arrayOf(
     "#1A237E",
@@ -209,6 +210,14 @@ class HalfArcBentLineView(ctx : Context) : View(ctx) {
             habl.startUpdating {
                 animator.start()
             }
+        }
+    }
+
+    companion object {
+        fun create(activity: Activity) : HalfArcBentLineView {
+            val view : HalfArcBentLineView = HalfArcBentLineView(activity)
+            activity.setContentView(view)
+            return view
         }
     }
 }
