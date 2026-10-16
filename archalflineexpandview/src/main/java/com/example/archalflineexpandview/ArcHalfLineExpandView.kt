@@ -187,4 +187,27 @@ class ArcHalfLineExpandView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcHalfLineExpandView) {
+
+        private val animator : Animator = Animator(view)
+        private val ahle : ArcHalfLineExpand = ArcHalfLineExpand(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ahle.draw(canvas, paint)
+            animator.animate {
+                ahle.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ahle.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
