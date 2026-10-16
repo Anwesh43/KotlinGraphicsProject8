@@ -212,4 +212,12 @@ class ArcHalfLineExpandView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : ArcHalfLineExpandView {
+            val view : ArcHalfLineExpandView = ArcHalfLineExpandView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
