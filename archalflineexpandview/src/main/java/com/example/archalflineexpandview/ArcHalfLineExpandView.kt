@@ -82,7 +82,7 @@ class ArcHalfLineExpandView(ctx : Context) : View(ctx) {
             this.scale += scGap * this.dir
             if (Math.abs(this.scale - this.prevScale) > 1) {
                 this.scale = this.prevScale + this.dir
-                this.dir = 0
+                this.dir = 0f
                 this.prevScale = this.scale
                 cb(this.prevScale)
             }
@@ -92,6 +92,34 @@ class ArcHalfLineExpandView(ctx : Context) : View(ctx) {
             if (dir === 0f) {
                 dir = 1f - 2 * prevScale
                 cb()
+            }
+        }
+    }
+
+    data class Animator(var view : View, var animated : Boolean = false) {
+
+        fun animate(cb : () -> Unit) {
+            if (animated) {
+                cb()
+                try {
+                    Thread.sleep(delay)
+                    view.invalidate()
+                } catch(ex : Exception) {
+
+                }
+            }
+        }
+
+        fun start() {
+            if (!animated) {
+                animated = true
+                view.postInvalidate()
+            }
+        }
+
+        fun stop() {
+            if (animated) {
+                animated = false
             }
         }
     }
