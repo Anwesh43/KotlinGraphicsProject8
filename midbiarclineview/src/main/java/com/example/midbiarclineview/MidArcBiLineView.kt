@@ -216,4 +216,12 @@ class MidArcBiLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : MidArcBiLineView {
+            val view : MidArcBiLineView = MidArcBiLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
