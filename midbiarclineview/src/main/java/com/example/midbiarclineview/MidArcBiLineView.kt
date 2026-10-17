@@ -127,4 +127,46 @@ class MidArcBiLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class MABLNode(var i : Int = 0, val state : State = State()) {
+
+        private var next : MABLNode? = null
+        private var prev : MABLNode? = null
+
+        init {
+
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = MABLNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawMABLNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : MABLNode {
+            var curr : MABLNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr!= null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+
+    }
 }
