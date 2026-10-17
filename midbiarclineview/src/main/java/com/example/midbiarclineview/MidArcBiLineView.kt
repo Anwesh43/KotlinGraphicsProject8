@@ -136,7 +136,7 @@ class MidArcBiLineView(ctx : Context) : View(ctx) {
         private var prev : MABLNode? = null
 
         init {
-
+            addNeighbor()
         }
 
         fun addNeighbor() {
@@ -212,7 +212,7 @@ class MidArcBiLineView(ctx : Context) : View(ctx) {
 
         fun handleTap() {
             mabl.startUpdating {
-                animator.stop()
+                animator.start()
             }
         }
     }
