@@ -215,4 +215,12 @@ class LineSweepOpenArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineSweepOpenArcView {
+            val view : LineSweepOpenArcView = LineSweepOpenArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
