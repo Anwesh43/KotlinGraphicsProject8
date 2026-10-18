@@ -190,4 +190,27 @@ class LineSweepOpenArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineSweepOpenArcView) {
+
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lsoa : LineSweepOpenArc = LineSweepOpenArc(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lsoa.draw(canvas, paint)
+            animator.animate {
+                lsoa.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lsoa.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
