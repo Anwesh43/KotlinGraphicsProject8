@@ -186,4 +186,27 @@ class BentLineSweepDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BentLineSweepDownView) {
+
+        private val blsd : BentLineSweepDown = BentLineSweepDown(0)
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            blsd.draw(canvas, paint)
+            animator.animate {
+                blsd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            blsd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
