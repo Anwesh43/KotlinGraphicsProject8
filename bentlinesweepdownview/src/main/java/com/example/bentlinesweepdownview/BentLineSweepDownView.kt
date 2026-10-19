@@ -211,4 +211,12 @@ class BentLineSweepDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BentLineSweepDownView {
+            val view : BentLineSweepDownView = BentLineSweepDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
