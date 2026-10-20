@@ -188,4 +188,27 @@ class BentSweepLineArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BentSweepLineArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val bsla : BentSweepLineArc = BentSweepLineArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bsla.draw(canvas, paint)
+            animator.animate {
+                bsla.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bsla.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
