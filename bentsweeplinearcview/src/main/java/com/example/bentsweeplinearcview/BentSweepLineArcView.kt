@@ -213,4 +213,12 @@ class BentSweepLineArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : BentSweepLineArcView {
+            val view : BentSweepLineArcView = BentSweepLineArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
