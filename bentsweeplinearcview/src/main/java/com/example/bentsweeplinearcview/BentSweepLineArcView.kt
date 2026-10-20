@@ -16,8 +16,8 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 5
-val scGap : Float = 0.04f / parts
+val parts : Int = 6
+val scGap : Float = 0.05f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
@@ -41,14 +41,15 @@ fun Canvas.drawBentSweepLineArc(scale : Float, w : Float, h : Float, paint : Pai
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h / 2 + (h / 2) * dsc(4)) {
-        rotate(rot * dsc(3))
+    drawXY(w / 2, h / 2 + (h / 2) * dsc(5)) {
+        rotate(rot * dsc(4))
         for (j in 0..1) {
             drawXY(0f, 0f) {
                 rotate(bentDeg * (2 - j) * dsc(1 + j))
                 drawLine(0f, 0f, 0f, -size * dsc(0), paint)
             }
         }
+        drawArc(RectF(-size, -size, size, size), -bentDeg, bentDeg * dsc(3), false, paint)
     }
 }
 
