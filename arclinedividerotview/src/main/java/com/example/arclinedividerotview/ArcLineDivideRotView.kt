@@ -16,7 +16,7 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 6
+val parts : Int = 7
 val scGap : Float = 0.06f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
@@ -45,9 +45,17 @@ fun Canvas.drawArcLineDivideRot(scale : Float, w : Float, h : Float, paint : Pai
         drawXY(size, 0f) {
             rotate(-rot * dsc(4))
             for (j in 0..1) {
-                drawXY(-size + size * j, 0f) {
+                drawXY(0f, 0f) {
                     rotate(rot * dsc(3) * (2 * j - 1))
-                    drawArc(RectF(0f, -size / 2, size, size / 2), 180f, 180f * dsc(2 * j), false, paint)
+                    drawXY(-size + size * j, 0f) {
+                        drawArc(
+                            RectF(0f, -size / 2, size, size / 2),
+                            180f,
+                            180f * dsc(2 * j),
+                            false,
+                            paint
+                        )
+                    }
                 }
             }
             drawXY(0f, -h * 0.5f * (1 - dsc(1))) {
