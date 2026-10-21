@@ -190,4 +190,26 @@ class ArcLineDivideRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcLineDivideRotView) {
+
+        private val aldr : ArcLineDivideRot = ArcLineDivideRot(0)
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            aldr.draw(canvas, paint)
+            animator.animate {
+                aldr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            aldr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
