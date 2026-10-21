@@ -29,7 +29,10 @@ fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse
 fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
 
 fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
-
+    save()
+    translate(x, y)
+    cb()
+    restore()
 }
 
 fun Canvas.drawArcLineDivideRot(scale : Float, w : Float, h : Float, paint : Paint) {
@@ -200,6 +203,7 @@ class ArcLineDivideRotView(ctx : Context) : View(ctx) {
         private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
 
         fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
             aldr.draw(canvas, paint)
             animator.animate {
                 aldr.update {
