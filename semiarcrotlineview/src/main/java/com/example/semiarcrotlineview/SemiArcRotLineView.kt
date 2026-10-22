@@ -210,4 +210,12 @@ class SemiArcRotLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : SemiArcRotLineView {
+            val view : SemiArcRotLineView = SemiArcRotLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
