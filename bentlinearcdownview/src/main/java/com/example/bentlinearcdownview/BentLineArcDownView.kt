@@ -186,4 +186,27 @@ class BentLineArcDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BentLineArcDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val blad : BentLineArcDown = BentLineArcDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            blad.draw(canvas, paint)
+            animator.animate {
+                blad.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            blad.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
