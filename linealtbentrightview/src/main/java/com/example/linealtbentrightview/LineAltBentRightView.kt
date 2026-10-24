@@ -188,4 +188,27 @@ class LineAltBentRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineAltBentRightView) {
+
+        private val labr : LineAltBentRight = LineAltBentRight(0)
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            labr.draw(canvas, paint)
+            animator.animate {
+                labr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            labr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
