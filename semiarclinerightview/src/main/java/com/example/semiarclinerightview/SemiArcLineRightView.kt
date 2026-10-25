@@ -188,4 +188,27 @@ class SemiArcLineRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : SemiArcLineRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val salr : SemiArcLineRight = SemiArcLineRight(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            salr.draw(canvas, paint)
+            animator.animate {
+                salr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            salr.startUpdating {
+                animator.stop()
+            }
+        }
+    }
 }
