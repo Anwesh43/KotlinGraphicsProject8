@@ -209,7 +209,7 @@ class SemiArcLineRightView(ctx : Context) : View(ctx) {
 
         fun handleTap() {
             salr.startUpdating {
-                animator.stop()
+                animator.start()
             }
         }
     }
