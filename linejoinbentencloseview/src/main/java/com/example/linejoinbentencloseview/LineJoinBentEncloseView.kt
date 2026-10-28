@@ -215,4 +215,12 @@ class LineJoinBentEncloseView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineJoinBentEncloseView {
+            val view : LineJoinBentEncloseView = LineJoinBentEncloseView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
