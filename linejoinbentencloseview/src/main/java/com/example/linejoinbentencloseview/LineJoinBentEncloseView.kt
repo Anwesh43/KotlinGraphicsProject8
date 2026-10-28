@@ -47,9 +47,9 @@ fun Canvas.drawLineJoinBentEnclose(scale : Float, w : Float, h : Float, paint : 
         }
         drawXY(-size, 0f) {
             drawLine(0f, 0f, size * 0.5f * dsc(0), -size * dsc(0), paint)
-        }
-        drawXY(size / 2, -size) {
-            drawLine(0f, 0f, size * 0.5f * dsc(1), size * dsc(1), paint)
+            drawXY(size / 2, -size) {
+                drawLine(0f, 0f, size * 0.5f * dsc(1), size * dsc(1), paint)
+            }
         }
     }
 }
