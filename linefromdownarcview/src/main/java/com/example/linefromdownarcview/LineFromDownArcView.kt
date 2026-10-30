@@ -60,3 +60,19 @@ fun Canvas.drawLFDANode(i : Int, scale : Float, paint : Paint) {
     paint.style = Paint.Style.STROKE
     drawLineFromDownArc(scale, w, h, paint)
 }
+
+class LineFromDownArcView(ctx : Context) : View(ctx) {
+
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+        }
+        return true
+    }
+}
