@@ -213,4 +213,12 @@ class LineFromDownArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineFromDownArcView {
+            val view : LineFromDownArcView = LineFromDownArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
