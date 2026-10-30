@@ -1,5 +1,6 @@
 package com.example.linefromdownarcview
 
+import android.R
 import android.view.View
 import android.view.MotionEvent
 import android.app.Activity
@@ -185,6 +186,29 @@ class LineFromDownArcView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : LineFromDownArcView) {
+
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lfad : LineFromDownArc = LineFromDownArc(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(backColor)
+            lfad.draw(canvas, paint)
+            animator.animate {
+                lfad.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lfad.startUpdating {
+                animator.start()
+            }
         }
     }
 }
