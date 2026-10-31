@@ -212,4 +212,12 @@ class LineSixtyMissArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineSixtyMissArcView {
+            val view : LineSixtyMissArcView = LineSixtyMissArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
