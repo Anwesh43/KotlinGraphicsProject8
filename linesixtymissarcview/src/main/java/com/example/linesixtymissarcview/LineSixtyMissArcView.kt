@@ -187,4 +187,27 @@ class LineSixtyMissArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineSixtyMissArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lsma : LineSixtyMissArc = LineSixtyMissArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lsma.draw(canvas, paint)
+            animator.animate {
+                lsma.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lsma.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
