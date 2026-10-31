@@ -12,13 +12,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.kotlingraphicsproject8.ui.theme.KotlinGraphicsProject8Theme
-import com.example.linefromdownarcview.LineFromDownArcView
+import com.example.linesixtymissarcview.LineSixtyMissArcView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        LineFromDownArcView.create(this)
+        LineSixtyMissArcView.create(this)
     }
 }
 
