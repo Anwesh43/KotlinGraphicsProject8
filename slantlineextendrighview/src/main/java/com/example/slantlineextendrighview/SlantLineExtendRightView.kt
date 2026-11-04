@@ -100,7 +100,7 @@ class SlantLineExtendRightView(ctx : Context) : View(ctx) {
 
     data class Animator(var view : View, var animated : Boolean = false) {
 
-        fun aniamte(cb : () -> Unit) {
+        fun animate(cb : () -> Unit) {
             if (animated) {
                 cb()
                 try {
@@ -186,6 +186,29 @@ class SlantLineExtendRightView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : SlantLineExtendRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val sler : SlantLineExtendRight = SlantLineExtendRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            sler.draw(canvas, paint)
+            animator.animate {
+                sler.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            sler.startUpdating {
+                animator.start()
+            }
         }
     }
 }
