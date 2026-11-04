@@ -213,4 +213,12 @@ class SlantLineExtendRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : SlantLineExtendRightView {
+            val view : SlantLineExtendRightView = SlantLineExtendRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
