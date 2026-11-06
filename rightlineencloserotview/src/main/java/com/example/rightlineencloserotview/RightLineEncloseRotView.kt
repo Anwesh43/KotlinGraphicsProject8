@@ -213,4 +213,12 @@ class RightLineEncloseRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : RightLineEncloseRotView {
+            val view : RightLineEncloseRotView = RightLineEncloseRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
