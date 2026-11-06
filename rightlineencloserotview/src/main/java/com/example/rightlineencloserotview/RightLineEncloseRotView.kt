@@ -124,4 +124,45 @@ class RightLineEncloseRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class RLERNode(var i : Int = 0, val state : State = State()) {
+
+        private var next : RLERNode? = null
+        private var prev : RLERNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = RLERNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawRLERNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : RLERNode {
+            var curr : RLERNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
