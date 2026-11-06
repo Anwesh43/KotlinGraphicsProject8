@@ -95,32 +95,32 @@ class RightLineEncloseRotView(ctx : Context) : View(ctx) {
                 cb()
             }
         }
+    }
 
-        data class Animator(var view : View, var animated : Boolean = false) {
+    data class Animator(var view : View, var animated : Boolean = false) {
 
-            fun animate(cb : () -> Unit) {
-                if (animated) {
-                    cb()
-                    try {
-                        Thread.sleep(delay)
-                        view.invalidate()
-                    } catch(ex : Exception) {
+        fun animate(cb : () -> Unit) {
+            if (animated) {
+                cb()
+                try {
+                    Thread.sleep(delay)
+                    view.invalidate()
+                } catch(ex : Exception) {
 
-                    }
                 }
             }
+        }
 
-            fun start() {
-                if (!animated) {
-                    animated = true
-                    view.postInvalidate()
-                }
+        fun start() {
+            if (!animated) {
+                animated = true
+                view.postInvalidate()
             }
+        }
 
-            fun stop() {
-                if (animated) {
-                    animated = false
-                }
+        fun stop() {
+            if (animated) {
+                animated = false
             }
         }
     }
@@ -186,6 +186,29 @@ class RightLineEncloseRotView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : RightLineEncloseRotView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val rler : RightLineEncloseRot = RightLineEncloseRot(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            rler.draw(canvas, paint)
+            animator.animate {
+                rler.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            rler.startUpdating {
+                animator.start()
+            }
         }
     }
 }
