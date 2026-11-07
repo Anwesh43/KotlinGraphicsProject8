@@ -221,4 +221,12 @@ class BiBarSqRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BiBarSqRotView {
+            val view : BiBarSqRotView = BiBarSqRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
