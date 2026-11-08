@@ -189,4 +189,27 @@ class BiArcBentJoinView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiArcBentJoinView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val babj : BiArcBentJoin = BiArcBentJoin(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            babj.draw(canvas, paint)
+            animator.animate {
+                babj.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            babj.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
