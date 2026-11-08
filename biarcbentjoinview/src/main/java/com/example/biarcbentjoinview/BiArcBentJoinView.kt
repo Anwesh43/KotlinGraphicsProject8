@@ -44,7 +44,7 @@ fun Canvas.drawBiArcBentJoin(scale : Float, w : Float, h : Float, paint : Paint)
         rotate(rot * dsc(5))
         for (j in 0..1) {
             drawXY(-2 * size + 3 * size * j,  0f) {
-                drawArc(RectF(0f, -size / 2, size, size / 2), 0f, 180f * dsc(3 * j), false, paint)
+                drawArc(RectF(0f, -size / 2, size, size / 2), 180f, 180f * dsc(3 * j), false, paint)
             }
             drawXY(-size + size * j, -size * j) {
                 drawLine(0f, 0f, size * dsc(1 + j), -size * (1f - 2 * j) * dsc(1 + j), paint)
