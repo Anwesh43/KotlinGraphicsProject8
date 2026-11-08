@@ -214,4 +214,12 @@ class BiArcBentJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BiArcBentJoinView {
+            val view : BiArcBentJoinView = BiArcBentJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
