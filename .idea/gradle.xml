@@ -23,7 +23,9 @@
             <option value="$PROJECT_DIR$/bentlinesweepdownview" />
             <option value="$PROJECT_DIR$/bentsweeplinearcview" />
             <option value="$PROJECT_DIR$/bentuparcjoinview" />
+            <option value="$PROJECT_DIR$/biarcbentjoinview" />
             <option value="$PROJECT_DIR$/biarchalfmoveview" />
+            <option value="$PROJECT_DIR$/bibarsqrotview" />
             <option value="$PROJECT_DIR$/bicircledropaltview" />
             <option value="$PROJECT_DIR$/biendarcdownview" />
             <option value="$PROJECT_DIR$/bilinebentjoinview" />
@@ -50,6 +52,7 @@
             <option value="$PROJECT_DIR$/lineextenarccloseview" />
             <option value="$PROJECT_DIR$/lineextendarcrotview" />
             <option value="$PROJECT_DIR$/lineextendleftarcview" />
+            <option value="$PROJECT_DIR$/linefromdownarcview" />
             <option value="$PROJECT_DIR$/linejoinbentencloseview" />
             <option value="$PROJECT_DIR$/linemovesweepupview" />
             <option value="$PROJECT_DIR$/lineopenarcrightview" />
@@ -58,6 +61,7 @@
             <option value="$PROJECT_DIR$/linerightrotarcview" />
             <option value="$PROJECT_DIR$/linesemiarcrightview" />
             <option value="$PROJECT_DIR$/lineshooterrotdownview" />
+            <option value="$PROJECT_DIR$/linesixtymissarcview" />
             <option value="$PROJECT_DIR$/lineslantarcjoinview" />
             <option value="$PROJECT_DIR$/linesweepencloseleftview" />
             <option value="$PROJECT_DIR$/linesweepjoinarcview" />
@@ -70,11 +74,13 @@
             <option value="$PROJECT_DIR$/midbiarclineview" />
             <option value="$PROJECT_DIR$/midvertarclineview" />
             <option value="$PROJECT_DIR$/rightenclosearcrightview" />
+            <option value="$PROJECT_DIR$/rightlineencloserotview" />
             <option value="$PROJECT_DIR$/rotlinehalfarcview" />
             <option value="$PROJECT_DIR$/semiarccompletehalfview" />
             <option value="$PROJECT_DIR$/semiarclinerightview" />
             <option value="$PROJECT_DIR$/semiarcrotlineview" />
             <option value="$PROJECT_DIR$/semiarcrotupview" />
+            <option value="$PROJECT_DIR$/slantlineextendrighview" />
             <option value="$PROJECT_DIR$/squprightdownview" />
             <option value="$PROJECT_DIR$/steparchalfleftview" />
             <option value="$PROJECT_DIR$/trienclosecircledownview" />
