@@ -43,7 +43,7 @@ fun Canvas.drawBisectedTriLineLeft(scale : Float, w : Float, h : Float, paint : 
     drawXY(w / 2 - (w / 2) * dsc(4), h / 2) {
         for (j in 0..1) {
             drawXY((w / 2) * (1 - dsc(0)) * (1 - j), -h * 0.5f * (1 - dsc(1)) * j) {
-                rotate(rot * dsc(2 + j) * (2 - j) * (1f - 2 * j))
+                rotate(rot * dsc(2 + j) * (2 - j) * (1f - 2 * j) + rot * 0.5f * (1 - j) * dsc(2 + j))
                 drawLine(0f, 0f, size * (1 - j), -size * j, paint)
             }
         }
