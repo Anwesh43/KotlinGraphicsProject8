@@ -182,8 +182,31 @@ class LineRightArcDownView(ctx : Context) : View(ctx) {
             }
         }
 
-        fun startUdpating(cb : () -> Unit) {
+        fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : LineRightArcDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val lrad : LineRightArcDown = LineRightArcDown(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lrad.draw(canvas, paint)
+            animator.animate {
+                lrad.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lrad.startUpdating {
+                animator.start()
+            }
         }
     }
 }
