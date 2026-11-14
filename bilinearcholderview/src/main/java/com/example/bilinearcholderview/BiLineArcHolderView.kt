@@ -44,12 +44,12 @@ fun Canvas.drawBiLineArcHolder(scale : Float, w : Float, h : Float, paint : Pain
         rotate(rot * dsc(4))
         drawXY(0f, h * 0.5f * (1 - dsc(2))) {
             for (j in 0..1) {
-                drawXY(-size + size * j, 0f) {
+                drawXY(-size + 2 * size * j, 0f) {
                     drawLine(0f, 0f, 0f, -size * (dsc(0) - dsc(3)), paint)
                 }
             }
             drawXY(0f, -size * (1 - dsc(3))) {
-                drawArc(RectF(-size, -size, size, size), 180f, 180f * dsc(4), false, paint)
+                drawArc(RectF(-size, -size, size, size), 180f, 180f * dsc(1), false, paint)
             }
         }
     }
