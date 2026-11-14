@@ -213,4 +213,12 @@ class CloseCapLineArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : CloseCapLineArcView {
+            val view : CloseCapLineArcView = CloseCapLineArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
