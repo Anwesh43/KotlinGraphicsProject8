@@ -17,7 +17,7 @@ val colors : Array<String> = arrayOf(
     "#00C853"
 )
 val parts : Int = 5
-val scGap : Float = 0.04f
+val scGap : Float = 0.04f / parts
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
 val rot : Float = 180f
@@ -41,7 +41,7 @@ fun Canvas.drawCloseCapLineArc(scale : Float, w : Float, h : Float, paint : Pain
         scale.divideScale(it, parts)
     }
     drawXY(w / 2 + (w / 2 + paint.strokeWidth) * dsc(4), h / 2) {
-        drawXY((w / 2) * (1 - dsc(0)), 0f) {
+        drawXY((w / 2) * (1 - dsc(0)), -size) {
             drawLine(0f, 0f, size, 0f, paint)
         }
         drawArc(RectF(-size, -2 * size, size, 0f), 0f, 90f * dsc(1), false, paint)
