@@ -191,4 +191,27 @@ class BiLineArcHolderView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiLineArcHolderView) {
+
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val blah : BiLineArcHolder = BiLineArcHolder(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            blah.draw(canvas, paint)
+            animator.animate {
+                blah.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            blah.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
