@@ -21,7 +21,7 @@ val scGap : Float = 0.04f / parts
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
 val rot : Float = 180f
-val strokeFactor : Float = 180f
+val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 
 fun Int.inverse() : Float = 1f / this
