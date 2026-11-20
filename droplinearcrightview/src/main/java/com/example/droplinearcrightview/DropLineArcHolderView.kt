@@ -90,7 +90,7 @@ class DropLineArcHolderView(ctx : Context) : View(ctx) {
             }
         }
 
-        fun startUpating(cb : () -> Unit) {
+        fun startUpdating(cb : () -> Unit) {
             if (dir === 0f) {
                 dir = 1f - 2 * prevScale
                 cb()
@@ -123,6 +123,47 @@ class DropLineArcHolderView(ctx : Context) : View(ctx) {
             if (animated) {
                 animated = false
             }
+        }
+    }
+
+    data class DLAHNode(var i : Int = 0, val state : State = State()) {
+
+        private var next : DLAHNode? = null
+        private var prev : DLAHNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = DLAHNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawDLAHNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : DLAHNode {
+            var curr : DLAHNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
         }
     }
 }
