@@ -214,4 +214,12 @@ class DropLineArcHolderView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : DropLineArcHolderView {
+            val view : DropLineArcHolderView = DropLineArcHolderView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
