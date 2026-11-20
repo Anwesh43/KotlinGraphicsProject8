@@ -189,4 +189,27 @@ class DropLineArcHolderView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : DropLineArcHolderView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val dlah : DropLineArcHolder = DropLineArcHolder(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            dlah.draw(canvas, paint)
+            animator.animate {
+                dlah.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            dlah.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
