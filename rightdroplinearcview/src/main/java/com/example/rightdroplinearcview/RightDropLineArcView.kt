@@ -16,7 +16,7 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 5
+val parts : Int = 6
 val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
@@ -40,13 +40,14 @@ fun Canvas.drawRightDropLineArc(scale : Float, w : Float, h : Float, paint : Pai
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2 + (w / 2) * dsc(4), h / 2) {
+    drawXY(w / 2 + (w / 2) * dsc(5), h / 2) {
         rotate(-rot * dsc(3))
         drawXY(0f, -h * 0.5f * (1 - dsc(0))) {
             rotate(rot * dsc(1))
             drawLine(0f, 0f, 0f, -size, paint)
         }
         drawArc(RectF(-size, -size, size, size), 0f, rot * dsc(2), false, paint)
+        drawLine(0f, size * (1 - dsc(4)), 0f, size, paint)
     }
 }
 
