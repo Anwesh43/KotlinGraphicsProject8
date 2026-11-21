@@ -211,4 +211,12 @@ class RightDropLineArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : RightDropLineArcView {
+            val view : RightDropLineArcView = RightDropLineArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
