@@ -52,7 +52,6 @@ fun Canvas.drawDropLineArcHolder(scale : Float, w : Float, h : Float, paint : Pa
         drawArc(RectF(-size, -size, size, size), 180f, 90f * dsc(2), false, paint)
     }
 }
-
 fun Canvas.drawDLAHNode(i : Int, scale : Float, paint : Paint) {
     val w : Float = width.toFloat()
     val h : Float = height.toFloat()
