@@ -186,4 +186,27 @@ class RightDropLineArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : RightDropLineArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val rdla : RightDropLineArc = RightDropLineArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            rdla.draw(canvas, paint)
+            animator.animate {
+                rdla.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            rdla.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
