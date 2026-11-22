@@ -212,4 +212,12 @@ class AltLineHalfArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : AltLineHalfArcView {
+            val view : AltLineHalfArcView = AltLineHalfArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
