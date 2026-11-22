@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/altendsidelineview" />
+            <option value="$PROJECT_DIR$/altlinehalfarcview" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/arcconcrotdownview" />
             <option value="$PROJECT_DIR$/archalflineexpandview" />
