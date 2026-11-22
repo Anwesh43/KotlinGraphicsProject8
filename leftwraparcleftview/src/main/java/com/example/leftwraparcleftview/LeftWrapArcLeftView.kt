@@ -44,7 +44,7 @@ fun Canvas.drawLeftWrapArc(scale : Float, w : Float, h : Float, paint : Paint) {
         rotate(-rot * dsc(3))
         for (j in 0..1) {
             drawXY(0f, -h * 0.5f * (1 - dsc(0))) {
-                rotate(rot * dsc(2) * j)
+                rotate(rot * (dsc(1) - dsc(4)) * j)
                 drawLine(0f, 0f, 0f, -size, paint)
             }
         }
