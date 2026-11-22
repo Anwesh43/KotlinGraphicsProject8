@@ -165,7 +165,7 @@ class AltLineHalfArcView(ctx : Context) : View(ctx) {
         }
     }
 
-    data class AltLineHalfAr(var i : Int) {
+    data class AltLineHalfArc(var i : Int) {
 
         private var curr : ALHANode = ALHANode(0)
         private var dir : Int = 1
@@ -185,6 +185,29 @@ class AltLineHalfArcView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : AltLineHalfArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val alha : AltLineHalfArc = AltLineHalfArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            alha.draw(canvas, paint)
+            animator.animate {
+                alha.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            alha.startUpdating {
+                animator.start()
+            }
         }
     }
 }
