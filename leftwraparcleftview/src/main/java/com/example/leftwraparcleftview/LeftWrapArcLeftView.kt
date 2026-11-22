@@ -216,4 +216,12 @@ class LeftWrapArcLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LeftWrapArcLeftView {
+            val view : LeftWrapArcLeftView = LeftWrapArcLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
