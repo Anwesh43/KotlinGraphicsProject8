@@ -191,4 +191,27 @@ class LeftWrapArcLeftView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LeftWrapArcLeftView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lwal : LeftWrapArcLeft = LeftWrapArcLeft(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lwal.draw(canvas, paint)
+            animator.animate {
+                lwal.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lwal.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
