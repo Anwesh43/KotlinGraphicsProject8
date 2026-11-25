@@ -190,4 +190,27 @@ class LineBentArcTouchView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineBentArcTouchView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lbat : LineBentArcTouch = LineBentArcTouch(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lbat.draw(canvas, paint)
+            animator.animate {
+                lbat.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lbat.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
