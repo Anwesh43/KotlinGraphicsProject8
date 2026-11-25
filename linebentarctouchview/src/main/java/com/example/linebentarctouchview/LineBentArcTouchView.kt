@@ -215,4 +215,12 @@ class LineBentArcTouchView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineBentArcTouchView {
+            val view : LineBentArcTouchView = LineBentArcTouchView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
