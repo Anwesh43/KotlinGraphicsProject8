@@ -12,13 +12,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.kotlingraphicsproject8.ui.theme.KotlinGraphicsProject8Theme
-import com.example.linebentarctouchview.LineBentArcTouchView
+import com.example.lineclosearcrightview.LineCloseArcRightView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        LineBentArcTouchView.create(this)
+        LineCloseArcRightView.create(this)
     }
 }
 
