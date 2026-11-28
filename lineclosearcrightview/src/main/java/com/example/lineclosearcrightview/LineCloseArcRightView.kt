@@ -188,4 +188,27 @@ class LineCloseArcRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineCloseArcRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lcar : LineCloseArcRight = LineCloseArcRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lcar.draw(canvas, paint)
+            animator.animate {
+                lcar.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lcar.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
